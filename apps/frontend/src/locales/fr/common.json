@@ -1,0 +1,61 @@
+{
+	"title": "Devis assurance moto",
+	"steps": {
+		"vehicle": "Véhicule",
+		"driver": "Conducteur",
+		"tariff": "Tarif",
+		"email": "Email"
+	},
+	"cta": {
+		"continue": "Continuer",
+		"get_price": "Obtenir mon tarif"
+	},
+	"mainPage": {
+		"logoAlt": "Logo Mentonnaise d'assurances",
+		"title": "Mentonnaise d'assurances – L’assurance simplifiée",
+		"description": "Préparez votre dossier en quelques étapes rapides pour recevoir un devis personnalisé et adapté à votre profil.",
+		"eyebrow": "Parcours 100 % accompagnés",
+		"secondary": "Des conseillers dédiés vous suivent par téléphone et par email pour finaliser votre souscription en moins de 24 h.",
+		"ctaHint": "Sans engagement, réponse garantie sous 24 h.",
+		"security": "Données hébergées et chiffrées en France.",
+		"benefits": {
+			"speed": "Réponse personnalisée en moins de 24 h",
+			"expert": "Conseillers spécialisés auto, moto et habitation",
+			"personal": "Dossier construit sur mesure selon votre profil"
+		},
+			"cards": {
+				"moto": {
+					"title": "Devis moto & scooter",
+					"description": "Garanties adaptées aux permis A1, A2 et grosses cylindrées."
+				},
+				"car": {
+					"title": "Devis assurance auto",
+					"description": "Protection renforcée pour conducteurs urbains, familles et flottes pros.",
+					"comingSoon": "Notre parcours auto arrive très bientôt."
+				},
+				"home": {
+					"title": "Devis habitation",
+					"description": "Multirisque habitation pour résidences principales, secondaires et locations."
+				}
+		},
+		"motocta": "Commencer mon devis moto",
+		"carcta": "Commencer mon devis voiture",
+		"homecta": "Commencer mon devis habitation"
+	},
+	"email": {
+		"info": {
+			"title": "Et après l’envoi ?",
+			"lead": "Nos équipes reviendront vers vous avec un devis sous quelques minutes.",
+			"sub": "Pour passer à l’étape de souscription, prévoyez ces pièces justificatives :",
+			"items": {
+				"permit": "Permis de conduire recto/verso",
+				"id": "Pièce d’identité recto/verso",
+				"carte_grise": "Carte grise recto/verso — ou certificat de cession + carte grise barrée — ou certificat provisoire d’immatriculation",
+				"releve": "Relevé d’informations auto et/ou moto si déjà assuré"
+			},
+			"advice": "Nous vous conseillons de préparer ces documents dès maintenant pour accélérer la souscription."
+		},
+		"sent": "Votre demande a bien été envoyée. Merci de votre confiance !",
+		"error": "Une erreur est survenue lors de l’envoi. Merci de réessayer."
+	}
+}

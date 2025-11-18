@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nouvelle demande de devis - {{ vehicle.make }} {{ vehicle.model }}</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f5f5f5;">
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f5f5f5;">
+    <tr>
+      <td align="center" style="padding: 40px 20px;">
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="700" style="max-width: 700px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <!-- Header -->
+          <tr>
+            <td style="padding: 40px 40px 30px; text-align: center; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); border-radius: 8px 8px 0 0;">
+              <img src="cid:logo" alt="Mentonnaise d'assurances" style="max-height: 60px; width: auto; margin-bottom: 20px;" />
+              <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 600;">Nouvelle demande de devis</h1>
+              <p style="margin: 10px 0 0; color: #e0e7ff; font-size: 16px;">Référence: {{ quoteId }}</p>
+            </td>
+          </tr>
+          
+          <!-- Content -->
+          <tr>
+            <td style="padding: 40px;">
+              <!-- Véhicule Section -->
+              <div style="background-color: #f9fafb; border-left: 4px solid #3b82f6; padding: 24px; margin-bottom: 24px; border-radius: 4px;">
+                <h2 style="margin: 0 0 16px; color: #111827; font-size: 20px; font-weight: 600; display: flex; align-items: center;">
+                  <span style="background-color: #3b82f6; color: white; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 12px; font-size: 16px;">🚗</span>
+                  Informations Véhicule
+                </h2>
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; width: 40%; vertical-align: top;">Marque</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ vehicle.make }}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Modèle</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ vehicle.model }}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Cylindrée</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ vehicle.cc }} cc</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">1ère mise en circulation</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ vehicle.firstRegistrationDate }}</td>
+                  </tr>
+                </table>
+              </div>
+
+              <!-- Identité Section -->
+              <div style="background-color: #f9fafb; border-left: 4px solid #10b981; padding: 24px; margin-bottom: 24px; border-radius: 4px;">
+                <h2 style="margin: 0 0 16px; color: #111827; font-size: 20px; font-weight: 600; display: flex; align-items: center;">
+                  <span style="background-color: #10b981; color: white; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 12px; font-size: 16px;">👤</span>
+                  Informations Client
+                </h2>
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; width: 40%; vertical-align: top;">Nom</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ identity.lastName }}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Email</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">
+                      <a href="mailto:{{ identity.email }}" style="color: #3b82f6; text-decoration: none;">{{ identity.email }}</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Téléphone</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">
+                      <a href="tel:{{ identity.phone }}" style="color: #3b82f6; text-decoration: none;">{{ identity.phone }}</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Âge</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ identity.age }} ans</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Code postal garage</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ identity.garagePostalCode }}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Bonus-malus</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ identity.bonusMalus }}</td>
+                  </tr>
+                </table>
+              </div>
+
+              <!-- Conducteur Section -->
+              <div style="background-color: #f9fafb; border-left: 4px solid #f59e0b; padding: 24px; margin-bottom: 24px; border-radius: 4px;">
+                <h2 style="margin: 0 0 16px; color: #111827; font-size: 20px; font-weight: 600; display: flex; align-items: center;">
+                  <span style="background-color: #f59e0b; color: white; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 12px; font-size: 16px;">🪪</span>
+                  Informations Conducteur
+                </h2>
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; width: 40%; vertical-align: top;">Type de permis</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ driver.permitType }}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Date d'obtention</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ driver.permitDate }}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Mois assurés (48 derniers mois)</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ driver.insuredMonthsLast48 }} mois</td>
+                  </tr>
+                </table>
+              </div>
+
+              <!-- Déclarations Section -->
+              <div style="background-color: #f9fafb; border-left: 4px solid #8b5cf6; padding: 24px; margin-bottom: 24px; border-radius: 4px;">
+                <h2 style="margin: 0 0 16px; color: #111827; font-size: 20px; font-weight: 600; display: flex; align-items: center;">
+                  <span style="background-color: #8b5cf6; color: white; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 12px; font-size: 16px;">📋</span>
+                  Déclarations
+                </h2>
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; width: 40%; vertical-align: top;">Condamnations (3 ans)</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">
+                      <span style="display: inline-block; padding: 4px 12px; border-radius: 12px; background-color: {{ declarationsUi.convictions.bg }}; color: {{ declarationsUi.convictions.color }}; font-weight: 600;">
+                        {{ declarationsUi.convictions.text }}
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Résiliation assureur (3 ans)</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">
+                      <span style="display: inline-block; padding: 4px 12px; border-radius: 12px; background-color: {{ declarationsUi.cancellation.bg }}; color: {{ declarationsUi.cancellation.color }}; font-weight: 600;">
+                        {{ declarationsUi.cancellation.text }}
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Suspension/annulation permis (5 ans)</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">
+                      <span style="display: inline-block; padding: 4px 12px; border-radius: 12px; background-color: {{ declarationsUi.suspension.bg }}; color: {{ declarationsUi.suspension.color }}; font-weight: 600;">
+                        {{ declarationsUi.suspension.text }}
+                      </span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+              <!-- Sinistres Section -->
+              @if(claims.length)
+              <div style="background-color: #fef2f2; border-left: 4px solid #ef4444; padding: 24px; margin-bottom: 24px; border-radius: 4px;">
+                <h2 style="margin: 0 0 16px; color: #111827; font-size: 20px; font-weight: 600; display: flex; align-items: center;">
+                  <span style="background-color: #ef4444; color: white; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 12px; font-size: 16px;">⚠️</span>
+                  Sinistres ({{ claims.length }})
+                </h2>
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                  @each(claim in claims)
+                  <tr>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">
+                      <strong>{{ claim.typeLabel }}</strong> — {{ claim.lossDate }}
+                    </td>
+                  </tr>
+                  @endeach
+                </table>
+              </div>
+              @endif
+
+              <!-- Valeurs Dérivées Section -->
+              <div style="background-color: #eff6ff; border-left: 4px solid #6366f1; padding: 24px; margin-bottom: 24px; border-radius: 4px;">
+                <h2 style="margin: 0 0 16px; color: #111827; font-size: 20px; font-weight: 600; display: flex; align-items: center;">
+                  <span style="background-color: #6366f1; color: white; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 12px; font-size: 16px;">📊</span>
+                  Calculs Dérivés
+                </h2>
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; width: 40%; vertical-align: top;">Ancienneté permis</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ derived.permitSeniorityMonths }} mois</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Âge du véhicule</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ derived.vehicleAgeYears }} ans</td>
+                  </tr>
+                </table>
+              </div>
+
+              <!-- Action Box -->
+              <div style="background-color: #eff6ff; border: 2px solid #3b82f6; padding: 24px; margin-top: 32px; border-radius: 6px; text-align: center;">
+                <p style="margin: 0; color: #1e40af; font-size: 16px; font-weight: 600;">
+                  📧 Répondre au client: <a href="mailto:{{ identity.email }}" style="color: #3b82f6; text-decoration: none; font-weight: 600;">{{ identity.email }}</a>
+                </p>
+                <p style="margin: 8px 0 0; color: #1e40af; font-size: 16px; font-weight: 600;">
+                  📞 Téléphoner: <a href="tel:{{ identity.phone }}" style="color: #3b82f6; text-decoration: none; font-weight: 600;">{{ identity.phone }}</a>
+                </p>
+              </div>
+            </td>
+          </tr>
+          
+          <!-- Footer -->
+          <tr>
+            <td style="padding: 30px 40px; background-color: #f9fafb; border-top: 1px solid #e5e7eb; border-radius: 0 0 8px 8px; text-align: center;">
+              <p style="margin: 0 0 10px; color: #6b7280; font-size: 12px; line-height: 1.5;">
+                Demande reçue le {{ receivedDate }} à {{ receivedTime }}
+              </p>
+              <p style="margin: 0; color: #9ca3af; font-size: 11px;">
+                © {{ currentYear }} Mentonnaise d'assurances. Tous droits réservés.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

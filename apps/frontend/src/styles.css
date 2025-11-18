@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* React DatePicker theme fix: ensure readable selects (white bg, dark text) */
+.react-datepicker,
+.react-datepicker__header {
+	background-color: #ffffff;
+	color: #111827; /* gray-900 */
+}
+
+.react-datepicker__month-select,
+.react-datepicker__year-select {
+	background-color: #ffffff;
+	color: #111827; /* gray-900 */
+	border: 1px solid #d1d5db; /* gray-300 */
+	border-radius: 0.375rem; /* rounded-md */
+	padding: 0.25rem 0.5rem; /* p-1 px-2 */
+}
+
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker-year-header {
+	color: #111827; /* gray-900 */
+}
+
+/* Small entrance animation utility */
+@keyframes fade-in-up {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.animate-fade-in {
+	animation: fade-in-up 200ms ease-out;
+}
+
+/* Step transition animations */
+@keyframes slide-in-right {
+	from {
+		opacity: 0;
+		transform: translateX(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slide-in-left {
+	from {
+		opacity: 0;
+		transform: translateX(-30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slide-out-right {
+	from {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateX(-30px);
+	}
+}
+
+@keyframes slide-out-left {
+	from {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateX(30px);
+	}
+}
+
+.step-enter-right {
+	animation: slide-in-right 300ms ease-out;
+}
+
+.step-enter-left {
+	animation: slide-in-left 300ms ease-out;
+}
+
+/* Smooth container height transitions */
+.transition-height {
+	transition: height 300ms ease;
+}
+
+/* Progress bar animation */
+.progress-track {
+	height: 6px;
+	background-color: #e5e7eb; /* gray-200 */
+	border-radius: 9999px;
+	overflow: hidden;
+}
+
+.progress-fill {
+	height: 100%;
+	background: linear-gradient(
+		90deg,
+		#0ea5e9,
+		#2563eb
+	); /* sky-500 to indigo-600 */
+	border-radius: 9999px;
+	transition: width 400ms ease;
+}
+
+.progress-dot {
+	width: 12px;
+	height: 12px;
+	border-radius: 9999px;
+	background-color: #e5e7eb; /* gray-200 */
+	border: 2px solid #cbd5e1; /* slate-300 */
+	transition: background-color 300ms ease, transform 300ms ease,
+		border-color 300ms ease;
+}
+
+.progress-dot.active {
+	background-color: #2563eb; /* indigo-600 */
+	border-color: #2563eb;
+	transform: scale(1.1);
+}
+
+/* Floating label inputs */
+.field {
+	position: relative;
+}
+.field > input {
+	padding-top: 1.25rem; /* space for label */
+}
+.field > label {
+	position: absolute;
+	left: 0.75rem;
+	top: 0.9rem;
+	font-size: 0.875rem; /* text-sm */
+	color: #6b7280; /* gray-500 */
+	pointer-events: none;
+	transition: transform 150ms ease, font-size 150ms ease, top 150ms ease,
+		color 150ms ease;
+}
+.field > input:focus + label,
+.field > input:not(:placeholder-shown) + label {
+	top: 0.25rem;
+	font-size: 0.75rem; /* text-xs */
+	color: #374151; /* gray-700 */
+}

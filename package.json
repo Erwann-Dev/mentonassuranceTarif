@@ -1,0 +1,16 @@
+{
+  "name": "moto-quote-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/frontend",
+    "apps/backend",
+    "packages/types"
+  ],
+  "scripts": {
+    "build": "npm -ws run build",
+    "dev": "npm -w apps/frontend run dev",
+    "typecheck": "npm -ws run typecheck"
+  }
+}
+
