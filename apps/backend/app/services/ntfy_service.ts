@@ -52,6 +52,20 @@ export class NtfyService {
       return `${dd}/${mm}/${yyyy}`
     }
 
+    const CANCELLATION_REASON_LABELS: Record<string, string> = {
+      NON_PAYMENT: 'Non-paiement',
+      RISK_AGGRAVATION: 'Aggravation du risque',
+      CLAIMS_FREQUENCY: 'Fréquence de sinistres',
+      OTHER: 'Autre',
+    }
+
+    const SUSPENSION_REASON_LABELS: Record<string, string> = {
+      DRUG: 'Stupéfiant',
+      ALCOHOL: 'Alcoolémie',
+      SPEEDING: 'Excès de vitesse',
+      OTHER: 'Autre',
+    }
+
 
     return `
       Demande de Devis Moto
@@ -68,11 +82,14 @@ export class NtfyService {
         Mois assurés (48 mois): ${payload.driver.insuredMonthsLast48}
 
       Déclarations :
-        Condamnations 3 ans: ${payload.declarations.convictions3y ? 'oui' : 'non'}
-        Résiliation assureur 3 ans: ${payload.declarations.insurerCancellation3y ? 'oui' : 'non'}
-        Suspension/annulation permis 5 ans: ${payload.declarations.licenseSuspension5y ? 'oui' : 'non'}
+        Condamnations 3 ans: ${payload.declarations.convictions3y ? 'oui' : 'non'}${payload.declarations.convictionDate ? ` (${formatFrDate(payload.declarations.convictionDate)})` : ''}
+        Résiliation assureur 3 ans: ${payload.declarations.insurerCancellation3y ? 'oui' : 'non'}${payload.declarations.insurerCancellationDate ? ` (${formatFrDate(payload.declarations.insurerCancellationDate)})` : ''}${payload.declarations.insurerCancellationReason ? ` - ${CANCELLATION_REASON_LABELS[payload.declarations.insurerCancellationReason] ?? payload.declarations.insurerCancellationReason}` : ''}
+        Suspension/annulation permis 5 ans: ${payload.declarations.licenseSuspension5y ? 'oui' : 'non'}${payload.declarations.licenseSuspensionDate ? ` (${formatFrDate(payload.declarations.licenseSuspensionDate)})` : ''}${payload.declarations.licenseSuspensionReason ? ` - ${SUSPENSION_REASON_LABELS[payload.declarations.licenseSuspensionReason] ?? payload.declarations.licenseSuspensionReason}` : ''}
 
       ${payload.claims.length > 0 ? `Sinistres:\n${payload.claims.map((c) => `  - ${CLAIM_LABELS[c.type] ?? c.type} — ${formatFrDate(c.lossDate)}`).join('\n')}` : ''}
+
+      Identité :
+        Date de naissance: ${formatFrDate(payload.identity.birthDate)}
 
       Dérivés :
         Ancienneté permis (mois): ${payload.derived.permitSeniorityMonths}

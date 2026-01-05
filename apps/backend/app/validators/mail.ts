@@ -15,7 +15,7 @@ export const EmailRequestValidator = vine.compile(
       lastName: vine.string(),
       phone: vine.string(),
       email: vine.string().email(),
-      age: vine.number(),
+      birthDate: vine.string(),
       bonusMalus: vine.number(),
     }),
     driver: vine.object({
@@ -25,8 +25,13 @@ export const EmailRequestValidator = vine.compile(
     }),
     declarations: vine.object({
       convictions3y: vine.boolean(),
+      convictionDate: vine.string().optional(),
       insurerCancellation3y: vine.boolean(),
+      insurerCancellationDate: vine.string().optional(),
+      insurerCancellationReason: vine.enum(['NON_PAYMENT', 'RISK_AGGRAVATION', 'CLAIMS_FREQUENCY', 'OTHER']).optional(),
       licenseSuspension5y: vine.boolean(),
+      licenseSuspensionDate: vine.string().optional(),
+      licenseSuspensionReason: vine.enum(['DRUG', 'ALCOHOL', 'SPEEDING', 'OTHER']).optional(),
     }),
     claims: vine.array(
       vine.object({

@@ -35,13 +35,24 @@ export function Moto() {
 			typeof declarations.convictions3y === 'boolean' &&
 			typeof declarations.insurerCancellation3y === 'boolean' &&
 			typeof declarations.licenseSuspension5y === 'boolean';
+		
+		// Validation conditionnelle pour les déclarations
+		const convictionsValid = !declarations.convictions3y || !!declarations.convictionDate;
+		const cancellationValid = !declarations.insurerCancellation3y || 
+			(!!declarations.insurerCancellationDate && !!declarations.insurerCancellationReason);
+		const suspensionValid = !declarations.licenseSuspension5y || 
+			(!!declarations.licenseSuspensionDate && !!declarations.licenseSuspensionReason);
+		
 		return Boolean(
 			identity.garagePostalCode?.length === 5 &&
 				identity.lastName &&
 				identity.phone &&
-				Number.isFinite(identity.age) &&
+				identity.birthDate &&
 				Number.isFinite(identity.bonusMalus) &&
-				hasDecls,
+				hasDecls &&
+				convictionsValid &&
+				cancellationValid &&
+				suspensionValid,
 		);
 	}
 	function isStep3Valid() {

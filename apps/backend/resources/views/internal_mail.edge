@@ -72,8 +72,8 @@
                     </td>
                   </tr>
                   <tr>
-                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Âge</td>
-                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ identity.age }} ans</td>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Date de naissance</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ identity.birthDateFormatted }}</td>
                   </tr>
                   <tr>
                     <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Code postal garage</td>
@@ -123,6 +123,12 @@
                       </span>
                     </td>
                   </tr>
+                  @if(declarations.convictions3y && declarationsUi.convictions.date)
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Date de condamnation</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ declarationsUi.convictions.date }}</td>
+                  </tr>
+                  @endif
                   <tr>
                     <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Résiliation assureur (3 ans)</td>
                     <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">
@@ -131,6 +137,18 @@
                       </span>
                     </td>
                   </tr>
+                  @if(declarations.insurerCancellation3y && declarationsUi.cancellation.date)
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Date de résiliation</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ declarationsUi.cancellation.date }}</td>
+                  </tr>
+                  @endif
+                  @if(declarations.insurerCancellation3y && declarationsUi.cancellation.reason)
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Raison de résiliation</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ declarationsUi.cancellation.reason }}</td>
+                  </tr>
+                  @endif
                   <tr>
                     <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Suspension/annulation permis (5 ans)</td>
                     <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">
@@ -139,6 +157,18 @@
                       </span>
                     </td>
                   </tr>
+                  @if(declarations.licenseSuspension5y && declarationsUi.suspension.date)
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Date de suspension/annulation</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ declarationsUi.suspension.date }}</td>
+                  </tr>
+                  @endif
+                  @if(declarations.licenseSuspension5y && declarationsUi.suspension.reason)
+                  <tr>
+                    <td style="padding: 8px 0; color: #6b7280; font-size: 14px; vertical-align: top;">Raison de suspension/annulation</td>
+                    <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 500;">{{ declarationsUi.suspension.reason }}</td>
+                  </tr>
+                  @endif
                 </table>
               </div>
 

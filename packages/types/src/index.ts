@@ -13,10 +13,18 @@ export interface ClaimItem {
   lossDate: string; // ISO 8601 YYYY-MM-DD
 }
 
+export type InsurerCancellationReason = 'NON_PAYMENT' | 'RISK_AGGRAVATION' | 'CLAIMS_FREQUENCY' | 'OTHER';
+export type LicenseSuspensionReason = 'DRUG' | 'ALCOHOL' | 'SPEEDING' | 'OTHER';
+
 export interface Declarations {
   convictions3y: boolean;
+  convictionDate?: string; // ISO 8601 YYYY-MM-DD
   insurerCancellation3y: boolean;
+  insurerCancellationDate?: string; // ISO 8601 YYYY-MM-DD
+  insurerCancellationReason?: InsurerCancellationReason;
   licenseSuspension5y: boolean;
+  licenseSuspensionDate?: string; // ISO 8601 YYYY-MM-DD
+  licenseSuspensionReason?: LicenseSuspensionReason;
 }
 
 export interface VehicleForm {
@@ -31,7 +39,7 @@ export interface IdentityForm {
   lastName: string;
   phone: string;
   email: string;
-  age: number;
+  birthDate: string; // ISO 8601 YYYY-MM-DD
   bonusMalus: number; // 0.50..3.50
 }
 

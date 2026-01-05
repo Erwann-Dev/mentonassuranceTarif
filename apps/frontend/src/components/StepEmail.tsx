@@ -22,13 +22,18 @@ interface Props {
 		garagePostalCode?: string;
 		lastName?: string;
 		phone?: string;
-		age?: number;
+		birthDate?: string;
 		bonusMalus?: number;
 	};
 	declarations: {
 		convictions3y?: boolean;
+		convictionDate?: string;
 		insurerCancellation3y?: boolean;
+		insurerCancellationDate?: string;
+		insurerCancellationReason?: 'NON_PAYMENT' | 'RISK_AGGRAVATION' | 'CLAIMS_FREQUENCY' | 'OTHER';
 		licenseSuspension5y?: boolean;
+		licenseSuspensionDate?: string;
+		licenseSuspensionReason?: 'DRUG' | 'ALCOHOL' | 'SPEEDING' | 'OTHER';
 	};
 	driver: {
 		permitType?: 'AM' | 'A1' | 'A2' | 'A' | 'B';
@@ -81,7 +86,7 @@ export function StepEmail({ vehicle, identity, declarations, driver }: Props) {
 				lastName: identity.lastName!,
 				phone: identity.phone!,
 				email,
-				age: identity.age!,
+				birthDate: identity.birthDate!,
 				bonusMalus: identity.bonusMalus ?? 1,
 			},
 			driver: {
@@ -91,8 +96,13 @@ export function StepEmail({ vehicle, identity, declarations, driver }: Props) {
 			},
 			declarations: {
 				convictions3y: !!declarations.convictions3y,
+				convictionDate: declarations.convictionDate,
 				insurerCancellation3y: !!declarations.insurerCancellation3y,
+				insurerCancellationDate: declarations.insurerCancellationDate,
+				insurerCancellationReason: declarations.insurerCancellationReason,
 				licenseSuspension5y: !!declarations.licenseSuspension5y,
+				licenseSuspensionDate: declarations.licenseSuspensionDate,
+				licenseSuspensionReason: declarations.licenseSuspensionReason,
 			},
 			claims,
 			derived: {

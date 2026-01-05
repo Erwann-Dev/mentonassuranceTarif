@@ -103,6 +103,20 @@ export class MaillerService {
       OTHER: 'Autres',
     }
 
+    const CANCELLATION_REASON_LABELS: Record<string, string> = {
+      NON_PAYMENT: 'Non-paiement',
+      RISK_AGGRAVATION: 'Aggravation du risque',
+      CLAIMS_FREQUENCY: 'Fréquence de sinistres',
+      OTHER: 'Autre',
+    }
+
+    const SUSPENSION_REASON_LABELS: Record<string, string> = {
+      DRUG: 'Stupéfiant',
+      ALCOHOL: 'Alcoolémie',
+      SPEEDING: 'Excès de vitesse',
+      OTHER: 'Autre',
+    }
+
     const formatFrDate = (iso?: string) => {
       if (!iso) return ''
       const d = new Date(iso)
@@ -124,16 +138,21 @@ export class MaillerService {
         bg: p.declarations.convictions3y ? '#fee2e2' : '#d1fae5',
         color: p.declarations.convictions3y ? '#991b1b' : '#065f46',
         text: p.declarations.convictions3y ? 'Oui' : 'Non',
+        date: p.declarations.convictionDate ? formatFrDate(p.declarations.convictionDate) : undefined,
       },
       cancellation: {
         bg: p.declarations.insurerCancellation3y ? '#fee2e2' : '#d1fae5',
         color: p.declarations.insurerCancellation3y ? '#991b1b' : '#065f46',
         text: p.declarations.insurerCancellation3y ? 'Oui' : 'Non',
+        date: p.declarations.insurerCancellationDate ? formatFrDate(p.declarations.insurerCancellationDate) : undefined,
+        reason: p.declarations.insurerCancellationReason ? CANCELLATION_REASON_LABELS[p.declarations.insurerCancellationReason] : undefined,
       },
       suspension: {
         bg: p.declarations.licenseSuspension5y ? '#fee2e2' : '#d1fae5',
         color: p.declarations.licenseSuspension5y ? '#991b1b' : '#065f46',
         text: p.declarations.licenseSuspension5y ? 'Oui' : 'Non',
+        date: p.declarations.licenseSuspensionDate ? formatFrDate(p.declarations.licenseSuspensionDate) : undefined,
+        reason: p.declarations.licenseSuspensionReason ? SUSPENSION_REASON_LABELS[p.declarations.licenseSuspensionReason] : undefined,
       },
     }
 
@@ -148,7 +167,10 @@ export class MaillerService {
         ...p.vehicle,
         firstRegistrationDate: formatFrDate(p.vehicle.firstRegistrationDate),
       },
-      identity: p.identity,
+      identity: {
+        ...p.identity,
+        birthDateFormatted: formatFrDate(p.identity.birthDate),
+      },
       driver: { ...p.driver, permitDate: formatFrDate(p.driver.permitDate) },
       declarations: p.declarations,
       derived: p.derived,

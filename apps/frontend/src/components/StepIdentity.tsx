@@ -5,7 +5,7 @@ interface Props {
 		garagePostalCode?: string;
 		lastName?: string;
 		phone?: string;
-		age?: number;
+		birthDate?: string;
 		bonusMalus?: number;
 	};
 	onChange: (next: Props['value']) => void;
@@ -23,7 +23,7 @@ export function StepIdentity({ value, onChange }: Props) {
 					next.garagePostalCode !== value.garagePostalCode ||
 					next.lastName !== value.lastName ||
 					next.phone !== value.phone ||
-					next.age !== value.age ||
+					next.birthDate !== value.birthDate ||
 					next.bonusMalus !== value.bonusMalus
 				) {
 					onChange(next);
@@ -107,15 +107,15 @@ export function StepIdentity({ value, onChange }: Props) {
 
 			<div className="grid grid-cols-2 gap-4">
 				<div>
-					<label className="block text-sm font-medium mb-1">Âge *</label>
+					<label className="block text-sm font-medium mb-1">Date de naissance *</label>
 					<input
-						type="number"
+						type="date"
 						className="w-full rounded border p-2 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300"
-						value={value.age ?? ''}
+						value={value.birthDate ?? ''}
 						onChange={e =>
 							onChange({
 								...value,
-								age: e.target.value ? Number(e.target.value) : undefined,
+								birthDate: e.target.value || undefined,
 							})
 						}
 					/>
